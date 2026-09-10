@@ -1,49 +1,84 @@
-<!--
-REMOVIDO NA LIMPEZA (2026-05-12):
-- .md legados fora da especificacao v1.2 (raiz e docs/): removidos por estarem desatualizados.
-- Fluxos legados nao mapeados a RF/RN/RNF (rotas/componentes antigos de controle termico e automacoes extras): despriorizados do bootstrap principal.
-- Hardcodes de regra de negocio (faixa de pH fixa no service): substituido por leitura de configuracao.
--->
+# 🌱 Astro Verde
 
-# Astro Verde
+Projeto de **agricultura vertical indoor automatizada**, desenvolvido para integrar software e hardware no monitoramento de um ambiente de cultivo controlado.
 
-Sistema de automacao e monitoramento para fazenda vertical indoor NFT, alinhado a especificacao oficial v1.2.
+O sistema utiliza dispositivos embarcados e uma aplicação de software para coletar, processar e disponibilizar informações importantes para o acompanhamento da produção.
 
-## RFs implementados (13)
-- RF01 Reposicao automatizada de agua: backend via leituras de nivel/boia e controle de bomba.
-- RF02 Iluminacao artificial: ciclo local no ESP32 + comandos backend.
-- RF03 Monitoramento do ambiente: coleta e exibicao de sensores.
-- RF04 Planejamento de colheita: estrutura de entidade/tabela `safra`.
-- RF05 Registro de safra: estrutura de entidade/tabela `safra`.
-- RF06 Sincronizacao de modulos empilhados: estrutura de entidade/tabela `modulo_nft`.
-- RF07 Alerta de interrupcao de fluxo NFT: regra critica no backend.
-- RF08 Monitoramento e alerta de pH: validacao por faixa da cultura.
-- RF09 Controle de acesso e autenticacao: RBAC no backend por perfil.
-- RF10 Geracao de relatorios: exportacao CSV por periodo.
-- RF11 Gestao de estoque de insumos: estrutura de entidade/tabela `estoque_insumo`.
-- RF12 Notificacoes de falhas criticas: base para Telegram + alerta persistido.
-- RF13 Controle da bomba de agua: ciclo local + controle operacional.
+O projeto foi desenvolvido e apresentado no **Inovatech**, evento estudantil de inovação e tecnologia.
 
-## RNF e RN destacados
-- RNF05/RN08: firmware mantem ciclo local de bomba e LED mesmo sem internet.
-- RNF06: validacao de range de sensores antes de persistir.
-- RNF12: comunicacao ESP->backend via HTTPS em producao (`BACKEND_BASE_URL` deve ser https).
-- RNF13: realtime habilitado em `leitura` e `alerta` na migracao Supabase.
-- RNF09: backup e configurado no painel Supabase (operacao externa ao codigo).
+##  Sobre o projeto
 
-## Banco (Supabase)
-Executar `server/src/database/supabase-migration.sql` para criar entidades oficiais do diagrama:
-- `controlador_iot`, `sensor`, `atuador`, `usuario`, `safra`, `reservatorio`, `modulo_nft`, `estoque_insumo`, `leitura`, `alerta`, `relatorio`.
+O Astro Verde surgiu com a proposta de explorar como automação, Internet das Coisas (IoT) e desenvolvimento de software podem ser aplicados à agricultura vertical indoor.
 
-## Permissoes (backend)
-Header de perfil usado no backend: `x-user-role` com valores:
-- `Administrador`
-- `Operador`
-- `Visualizador`
+Sensores e dispositivos conectados ao sistema realizam a coleta de informações do ambiente e da solução utilizada no cultivo, permitindo acompanhar diferentes parâmetros da operação.
 
-## Execucao
-```bash
-cd server
-npm install
-npm start
-```
+Entre os dados monitorados estão:
+
+- pH da água
+- Nível de água
+- Informações relacionadas aos nutrientes e minerais
+- Dados provenientes dos sensores da estrutura
+- Condições importantes para acompanhamento do cultivo
+
+##  Arquitetura
+
+O projeto combina diferentes áreas da tecnologia:
+
+**Hardware e sensores**  
+Responsáveis pela leitura das condições do sistema de cultivo.
+
+**ESP / sistemas embarcados**  
+Responsáveis pela automação, comunicação com sensores e envio dos dados coletados.
+
+**Backend**  
+Responsável pelo recebimento, processamento e organização das informações.
+
+**Interface de software**  
+Responsável pela visualização e acompanhamento dos dados coletados.
+
+O fluxo geral pode ser representado como:
+
+`Sensores → ESP → Backend → Dados → Interface`
+
+##  Tecnologias e conceitos
+
+- ESP e sistemas embarcados
+- Internet das Coisas (IoT)
+- Sensores
+- Automação
+- APIs e Backend
+- Integração entre hardware e software
+- Monitoramento de dados
+- Git & GitHub
+
+##  Minha participação
+
+Atuei como um dos principais desenvolvedores do projeto, com foco principalmente em:
+
+- Automação do sistema
+- Integração dos sensores
+- Programação e utilização dos dispositivos ESP
+- Comunicação entre hardware e software
+- Desenvolvimento e integração com o backend
+- Testes do protótipo
+
+O desenvolvimento foi realizado em equipe e resultou em um protótipo funcional apresentado durante o **Inovatech**.
+
+##  Resultado
+
+O Astro Verde saiu do ambiente de desenvolvimento e foi utilizado como projeto demonstrativo no evento.
+
+O protótipo permitiu apresentar na prática a integração entre agricultura, automação, IoT e desenvolvimento de software, utilizando dados coletados de uma estrutura real de cultivo vertical indoor.
+
+##  Status
+
+**Projeto concluído / atualmente sem desenvolvimento ativo.**
+
+O repositório permanece disponível como documentação do desenvolvimento, dos experimentos realizados e dos resultados apresentados.
+
+##  Autor / Colaborador
+
+**Nelson Souza**  
+Desenvolvedor — Automação e Backend
+
+GitHub: [@nelsonlsouza](https://github.com/nelsonlsouza)
